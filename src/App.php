@@ -12,8 +12,7 @@ class App{
         $controller = $route->controller();
         $action = $route->action();
         $request = $route->request();
-
         $controller = Controller::factory($controller);
-        print_r($server);
+        $controller->run($route);
     }
 }
