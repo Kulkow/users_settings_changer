@@ -17,7 +17,7 @@ class Route{
         $path = array_values($path);
         $args = $path;
         if(! empty($path[0])){
-            $this->controller = str_replace(['-'], '', ucwords($path[0], '-'));
+            $this->controller = str_replace(['-', '_'], '', ucwords($path[0], '-_'));
             array_shift($args);
         }
         if(! empty($path[1])){

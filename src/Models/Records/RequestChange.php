@@ -3,8 +3,8 @@ namespace K1785\UserSettingRequest\Models\Records;
 
 class RequestChange extends Record{
 
-    protected $table = 'request_changes';
-    protected $fields = [
+    protected string $table = 'request_changes';
+    protected array $fields = [
         'id',
         'user_id',
         'type',
@@ -14,7 +14,7 @@ class RequestChange extends Record{
         'status'
     ];
 
-    protected $belongsTo = [
+    protected array $belongsTo = [
         'User' => [
             'model' => 'K1785\UserSettingRequest\Models\Records\User',
             'field' => 'user_id'

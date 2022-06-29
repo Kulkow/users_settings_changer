@@ -3,7 +3,7 @@ namespace K1785\UserSettingRequest\Models\UserSettings;
 
 class UserSettingField extends UserSettingBase implements UserSettingInterface {
 
-    protected $description = 'Изменение поля';
+    protected string $description = 'Изменение поля';
     protected $field = [];
 
     /**
@@ -12,7 +12,7 @@ class UserSettingField extends UserSettingBase implements UserSettingInterface {
     public function __construct(array $config = [])
     {
         parent::__construct($config);
-        if(empty($config['field'])){
+        if(! empty($config['field'])){
             $this->field = $config['field'];
         }
     }

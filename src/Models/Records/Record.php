@@ -5,16 +5,27 @@ namespace K1785\UserSettingRequest\Models\Records;
 class Record{
 
 
-    protected $table = null;
-    protected $fields = [];
-    protected $belongsTo = [];
+    protected string $table = '';
+    protected array $fields = [];
+    protected array $data = [];
+    protected array $belongsTo = [];
 
     /**
-     * @param array $fields
+     * @param array $data
      */
-    public function __construct(array $fields = [])
+    public function __construct(array $data = [])
     {
+        $this->data($data);
+    }
 
+    public function data(array $data = [])
+    {
+        $this->data = $data;
+    }
+
+    public function __get($field = null)
+    {
+        return isset($this->data[$field]) ? $this->data[$field] : false;
     }
 
     /**
@@ -23,7 +34,8 @@ class Record{
      */
     public function find(array $conditions = []) : Record
     {
-        return new Record();
+        $class = get_class($this);
+        return new $class();
     }
 
     /**

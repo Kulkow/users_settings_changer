@@ -3,8 +3,8 @@ namespace K1785\UserSettingRequest\Models\Records;
 
 class RequestChangeStorage extends Record{
 
-    protected $table = 'request_change_storages';
-    protected $fields = [
+    protected string $table = 'request_change_storages';
+    protected array $fields = [
         'id',
         'old',
         'new',

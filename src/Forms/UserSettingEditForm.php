@@ -10,6 +10,7 @@ class UserSettingEditForm extends Form implements FormInterface {
 
     public function __construct()
     {
+
         $this->UserSettingField = new UserSettingField(['field' => 'email']);
     }
 

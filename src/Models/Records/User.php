@@ -3,8 +3,8 @@ namespace K1785\UserSettingRequest\Models\Records;
 
 class User extends Record{
 
-    protected $table = 'users';
-    protected $fields = [
+    protected string $table = 'users';
+    protected array $fields = [
         'id',
         'username',
         'email'

@@ -33,4 +33,28 @@ class Controller{
         }
         return new Controller();
     }
+
+    /**
+     * @return array
+     */
+    protected function auth() : array
+    {
+        return [
+            'id' => 1,
+            'role' => 'admin'
+        ];
+    }
+
+    public function error($code, $message)
+    {
+        var_dump('Code : '.$code);
+        var_dump('Message : '.$message);
+    }
+
+    public function render($template, array $vars = [])
+    {
+        $view = new View($template);
+        $view->set($vars);
+        return $view->render();
+    }
 }
