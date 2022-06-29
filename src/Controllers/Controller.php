@@ -5,6 +5,7 @@ use K1785\UserSettingRequest\Routes\Route;
 
 class Controller{
 
+    protected array $request = [];
 
     /**
      * @param Route $route
@@ -15,6 +16,7 @@ class Controller{
     {
         $action = $route->action();
         if(method_exists($this, $action)){
+            $this->request = $route->request();
             return $this->$action(...$route->args());
         }
         throw new \Exception('Not find action '.$action.' in '.$route->controller());
@@ -47,6 +49,9 @@ class Controller{
 
     public function error($code, $message)
     {
+        if(is_array($message)){
+            $message = json_encode($message, JSON_UNESCAPED_UNICODE);
+        }
         var_dump('Code : '.$code);
         var_dump('Message : '.$message);
     }

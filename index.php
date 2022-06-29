@@ -6,4 +6,4 @@ require_once __DIR__.'/vendor/autoload.php';
 use K1785\UserSettingRequest\App;
 
 $app = new App();
-$app->run($_SERVER);
+$app->run($_SERVER, $_REQUEST);

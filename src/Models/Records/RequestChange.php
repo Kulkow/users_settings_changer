@@ -1,6 +1,9 @@
 <?php
 namespace K1785\UserSettingRequest\Models\Records;
 
+use K1785\UserSettingRequest\Models\RequestChanges\RequestChangeBase;
+use K1785\UserSettingRequest\Models\RequestChanges\RequestChangeProvider;
+
 class RequestChange extends Record{
 
     protected string $table = 'request_changes';
@@ -24,5 +27,16 @@ class RequestChange extends Record{
             'field' => 'request_change_storage_id'
         ]
     ];
+
+    public function getType($id = null) : RequestChangeBase
+    {
+        $record = $this->find(['id' => $id]);
+        if($record->type){
+            $RequestChangeProvider = new RequestChangeProvider();
+            $RequestChangeProvider->setRecord($record);
+            return $RequestChangeProvider;
+        }
+        throw new \Exception('Not set type for setting id '.$id);
+    }
 
 }

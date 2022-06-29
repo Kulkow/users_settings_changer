@@ -6,6 +6,12 @@ abstract class Form implements FormInterface {
     protected $data = [];
     protected $errors = [];
     protected $result = '';
+    protected $config = [];
+
+    public function __construct(array $config = [])
+    {
+        $this->config = $config;
+    }
 
     public function data(array $data = [])
     {

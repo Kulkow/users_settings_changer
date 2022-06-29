@@ -40,11 +40,19 @@ class Record{
 
     /**
      * @param array $data
-     * @return bool
+     * @return int
      */
-    public function create(array $data = []) : bool
+    public function create(array $data = []) : int
     {
-        return true;
+        return 1;
+    }
+
+    /**
+     * @return array
+     */
+    public function asArray()
+    {
+        return $this->data;
     }
 
     /**

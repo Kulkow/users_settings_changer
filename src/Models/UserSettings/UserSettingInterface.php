@@ -1,6 +1,8 @@
 <?php
 namespace K1785\UserSettingRequest\Models\UserSettings;
 
+use K1785\UserSettingRequest\Models\RequestChanges\RequestChangeBase;
+
 interface UserSettingInterface{
 
     /**
@@ -18,5 +20,9 @@ interface UserSettingInterface{
     /**
      * @return bool
      */
-    public function requestChange() : bool ;
+    public function isRequestChange() : bool ;
+
+    public function requestChange() : RequestChangeBase ;
+
+    public function save() : bool ;
 }

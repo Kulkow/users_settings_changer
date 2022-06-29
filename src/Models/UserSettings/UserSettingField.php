@@ -1,6 +1,9 @@
 <?php
 namespace K1785\UserSettingRequest\Models\UserSettings;
 
+use K1785\UserSettingRequest\Models\RequestChanges\RequestChangeBase;
+use K1785\UserSettingRequest\Models\RequestChanges\RequestChangeProvider;
+
 class UserSettingField extends UserSettingBase implements UserSettingInterface {
 
     protected string $description = 'Изменение поля';
@@ -46,7 +49,12 @@ class UserSettingField extends UserSettingBase implements UserSettingInterface {
         return true;
     }
 
-    public function requestChange() : bool
+    public function requestChange() : RequestChangeBase
+    {
+        return new RequestChangeProvider();
+    }
+
+    public function isRequestChange() : bool
     {
         return true;
     }

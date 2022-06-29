@@ -59,11 +59,13 @@ class UserSetting extends Record{
 
     public function getType($id = null) : UserSettingBase
     {
-        $record = $this->find(['alias' => $id]);
+        $record = $this->find(['id' => $id]);
         $recordType = $record->type();
         if($recordType->type){
             $config = $recordType->config ? json_decode($record->config, true) : [];
-            return UserSettingBase::factory($recordType->type, $config);
+            $UserSettingBase = UserSettingBase::factory($recordType->type, $config);
+            $UserSettingBase->setRecord($record);
+            return $UserSettingBase;
         }
         throw new \Exception('Not set type for setting id '.$id);
     }

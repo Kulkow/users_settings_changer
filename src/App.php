@@ -6,12 +6,10 @@ use K1785\UserSettingRequest\Routes\Route;
 
 class App{
 
-    public function run($server)
+    public function run($server, $request  = [])
     {
-        $route = new Route($server);
+        $route = new Route($server, $request);
         $controller = $route->controller();
-        $action = $route->action();
-        $request = $route->request();
         $controller = Controller::factory($controller);
         $controller->run($route);
     }

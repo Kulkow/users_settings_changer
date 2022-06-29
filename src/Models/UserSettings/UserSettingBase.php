@@ -8,6 +8,7 @@ abstract class UserSettingBase implements UserSettingInterface {
     protected array $config = [];
     protected array $errors = [];
     protected string $description = '';
+    protected $type = null;
     protected Record $record;
 
     /**
@@ -21,6 +22,33 @@ abstract class UserSettingBase implements UserSettingInterface {
     public function setting(array $data = [])
     {
         $this->setting = $data;
+    }
+
+
+    public function setRecord(Record $record)
+    {
+        $this->record = $record;
+    }
+
+    public function record() : Record
+    {
+        return $this->record;
+    }
+
+    /**
+     * @return array
+     */
+    public function data() : array
+    {
+        //данные которые нужно сохранить
+        return $this->setting;
+    }
+
+
+
+    public function type()
+    {
+        return $this->type;
     }
 
     /**
@@ -53,5 +81,10 @@ abstract class UserSettingBase implements UserSettingInterface {
     public function description() : string
     {
         return $this->description;
+    }
+
+    public function save(): bool
+    {
+        return true;
     }
 }
